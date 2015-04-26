@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch" 
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+ 
+			  <!-- ========================= -->
+			  			<!-- READER -->
+			  <!-- ========================= -->
+  <bean id="personItemReader" class="aba.batch.web.perso.reader.PersonItemReader">
+  		<!-- emplacement du fichier à lire -->
+  		<property name="resource" value="${file.input}" />
+		<property name="file" value="${file.input}" />
+		
+		<!-- lineMappe : mapper entre les chapms du file et les colonnes de la databases-->
+		<property name="lineMapper">
+			<bean></bean>
+		</property>
+  </bean>
+ 
+			  <!-- ========================= -->
+			 			 <!-- WRITER -->
+			  <!-- ========================= -->
+  <bean id="personItemWriter" class="aba.batch.web.perso.writer.PersonItemWriter">
+  </bean>
+ 
+				  <!-- ========================= -->
+				 			 <!-- LISTENER -->
+				  <!-- ========================= -->
+ 
+ <bean id="projectJobListener" class="aba.batch.web.perso.listener.ProjectJobListener"/>
+ 
+ </beans>
